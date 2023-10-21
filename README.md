@@ -10,13 +10,14 @@ Modified the caesar-cipher-cli to include an option to encode the message using 
    - piglatin rules found at https://web.ics.purdue.edu/~morelanj/RAO/prepare2.html
 
 #### To use:
+Navigate to the caesar-cipher-cli folder and run the command using the piglatin keyword.
 1. ```cd caesar-cipher-cli```
 2. ```cargo build```
 3. ```cargo run -- --message <message text> --piglatin```
 
 #### Example:
 
-
+![Pig Latin Example](piglain_example.png)
 
 ### Makefile
 
