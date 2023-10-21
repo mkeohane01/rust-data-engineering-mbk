@@ -8,10 +8,14 @@ To decrypt:
 
 cargo run --  --message "Ypp dy dro lexuob. Ofobi zobcyx pyb drowcovfoc" --decrypt --shift 10
 
+To encrypt using piglatin:
+
+cargo run --  --message "Off to the bunker. Every person for themselves" --piglatin-encrypt
+
 */
 
 
-use caeser_cipher_cli::{decrypt, encrypt};
+use caeser_cipher_cli::{decrypt, encrypt, piglatin};
 use clap::Parser;
 
 /// CLI tool to encrypt and decrypt messages using the caeser cipher
@@ -26,8 +30,12 @@ struct Args {
     #[arg(short, long)]
     decrypt: bool,
 
-    /// The message to encrypt or decrypt
+    /// Encrypt the message using piglatin
     #[arg(short, long)]
+    piglatin: bool,
+
+    /// The message to encrypt or decrypt
+    #[arg(long)]
     message: String,
 
     /// The shift to use for the cipher
@@ -43,7 +51,9 @@ fn main() {
         println!("{}", encrypt(&args.message, args.shift));
     } else if args.decrypt {
         println!("{}", decrypt(&args.message, args.shift));
+    } else if args.piglatin {
+        println!("{}", piglatin(&args.message));
     } else {
-        println!("Please specify either --encrypt or --decrypt");
+        println!("Please specify either --encrypt or --decrypt or --piglatin");
     }
 }

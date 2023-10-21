@@ -22,3 +22,25 @@ pub fn encrypt(text: &str, shift: u8) -> String {
 pub fn decrypt(text: &str, shift: u8) -> String {
     encrypt(text, 26 - shift)
 }
+
+/*
+This code defines two more functions: piglatin_encrypt and piglatin_decrypt.
+The encrypt function takes a plaintext string and returns the string translated into piglatin. The decrypt function takes a string and decrypts it from piglatin,
+and returns the plaintext string.
+
+*/
+
+pub fn piglatin(text: &str) -> String {
+    let mut result = String::new();
+    for word in text.split_whitespace() {
+        let mut chars = word.chars();
+        let first_char = chars.next().unwrap();
+        if "aeiouAEIOU".contains(first_char) {
+            result.push_str(&format!("{}hay ", word));
+        } else {
+            result.push_str(&format!("{}{}ay ", chars.as_str(), first_char));
+        }
+    }
+    result.trim_end().to_string()
+}
+
